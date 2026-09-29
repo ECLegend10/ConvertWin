@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "../vendor/shadcn-tailwind-4.13.0.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f6f7f9;
+  --foreground: #10172a;
+  --card: #ffffff;
+  --card-foreground: #10172a;
+  --popover: #ffffff;
+  --popover-foreground: #10172a;
+  --primary: #3047d8;
+  --primary-foreground: #ffffff;
+  --secondary: #edf0ff;
+  --secondary-foreground: #2235b0;
+  --muted: #eef1f5;
+  --muted-foreground: #627087;
+  --accent: #e9edff;
+  --accent-foreground: #2537b4;
+  --destructive: #c53445;
+  --border: #dfe4ec;
+  --input: #d7deea;
+  --ring: #5166e5;
+  --radius: 0.9rem;
+}
+
+.dark {
+  --background: #0d111a;
+  --foreground: #f4f6fb;
+  --card: #151b27;
+  --card-foreground: #f4f6fb;
+  --popover: #181f2d;
+  --popover-foreground: #f4f6fb;
+  --primary: #7f91ff;
+  --primary-foreground: #0b1020;
+  --secondary: #202a48;
+  --secondary-foreground: #cfd6ff;
+  --muted: #202735;
+  --muted-foreground: #9ba8bc;
+  --accent: #263052;
+  --accent-foreground: #dce1ff;
+  --destructive: #ff7b8a;
+  --border: #2a3445;
+  --input: #344055;
+  --ring: #90a0ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 5px);
+  --radius-md: calc(var(--radius) - 3px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+* { border-color: var(--border); }
+html { scroll-behavior: smooth; }
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+::selection { background: color-mix(in srgb, var(--primary) 22%, transparent); }
+.page-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--border) 36%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--border) 36%, transparent) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 28rem);
+}
+@keyframes scan {
+  0% { transform: translateX(-130%); }
+  100% { transform: translateX(230%); }
+}
+.conversion-scan { animation: scan 1.15s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
